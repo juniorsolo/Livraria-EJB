@@ -3,7 +3,6 @@ package br.com.caelum.livraria.bean;
 import java.util.List;
 
 import javax.enterprise.inject.Model;
-import javax.inject.Inject;
 
 import br.com.caelum.livraria.dao.AutorDao;
 import br.com.caelum.livraria.dao.LivroDao;
@@ -13,15 +12,11 @@ import br.com.caelum.livraria.modelo.Livro;
 @Model
 public class LivroBean {
 	
-	@Inject
-	private Livro livro;
+	private Livro livro = new Livro();
 	private Integer autorId;
 	
-	@Inject
-	private LivroDao livroDao;
-	
-	@Inject
-	private AutorDao autorDao;
+	private LivroDao livroDao = new LivroDao();
+	private AutorDao autorDao = new AutorDao();
 
 	public void cadastra() {
 		

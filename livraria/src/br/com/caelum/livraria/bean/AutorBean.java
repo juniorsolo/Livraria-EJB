@@ -11,11 +11,10 @@ import br.com.caelum.livraria.modelo.Autor;
 @Model
 public class AutorBean {
 	
-	@Inject
-	private Autor autor;
+	private Autor autor = new Autor();
 	
 	@Inject
-	private AutorDao dao = new AutorDao();
+	private AutorDao dao;
 	
 	public Autor getAutor() {
 		return autor;
