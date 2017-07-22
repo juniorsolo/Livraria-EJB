@@ -4,13 +4,15 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import br.com.caelum.livraria.modelo.Autor;
 
 @Stateless
 public class AutorDao {
 
-	private Banco banco = new Banco();
+	@Inject
+	private Banco banco;
 
 	@PostConstruct
 	void aposCriacao(){
@@ -21,12 +23,12 @@ public class AutorDao {
 		
 		System.out.println("salvando autor..." + autor.getNome());
 		
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(10000);
+//		} catch (InterruptedException e) {
+//			
+//			e.printStackTrace();
+//		}
 		
 		banco.save(autor);
 		System.out.println("Gravado..." + autor.getNome());
