@@ -1,5 +1,6 @@
 package br.com.caelum.livraria.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.inject.Model;
@@ -14,6 +15,8 @@ import br.com.caelum.livraria.modelo.Livro;
 public class LivroBean {
 	
 	private Livro livro = new Livro();
+	
+	private List<Livro> livros = new ArrayList<>();
 	private Integer autorId;
 	
 	@Inject
