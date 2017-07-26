@@ -4,6 +4,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,6 +15,7 @@ import javax.persistence.PersistenceContext;
 import br.com.caelum.livraria.modelo.Autor;
 
 @Stateless
+@TransactionManagement(TransactionManagementType.CONTAINER) // opcional
 public class AutorDao {
 
 	@PersistenceContext
@@ -21,6 +26,7 @@ public class AutorDao {
 		System.out.println("autor dao foi criado...");
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.MANDATORY) // madatoria estar numa transacao para chamar por isso criado o service
 	public void salva(Autor autor) {
 		
 		System.out.println("salvando autor..." + autor.getNome());
