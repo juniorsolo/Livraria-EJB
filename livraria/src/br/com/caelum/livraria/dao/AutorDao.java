@@ -27,7 +27,7 @@ public class AutorDao {
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.MANDATORY) // madatoria estar numa transacao para chamar por isso criado o service
-	public void salva(Autor autor) {
+	public void salva(Autor autor) throws LivrariaException {
 		
 		System.out.println("salvando autor..." + autor.getNome());
 		
@@ -40,6 +40,11 @@ public class AutorDao {
 		
 		manager.persist(autor);
 		System.out.println("Gravado..." + autor.getNome());
+		
+		//Teste de erro, ao observar a pilha de erro no console vemos o rollback do persist
+		//throw new  RuntimeException("Servico exter deu erro!");
+		
+		throw new LivrariaException();
 	}
 	
 	public List<Autor> todosAutores() {

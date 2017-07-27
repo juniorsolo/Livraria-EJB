@@ -14,7 +14,7 @@ public class AutorService {
 	@Inject
 	AutorDao dao;
 	
-	public void adiciona(Autor autor){
+	public void adiciona(Autor autor) {
 		//Mais regras de negocio
 		
 		dao.salva(autor);
